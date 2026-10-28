@@ -2,8 +2,8 @@
 _commit: 0.15.0
 _src_path: gh:radio-aktywne/template-meta
 accountname: radio-aktywne
-description: MinIO database template 🦩
-reponame: template-database-minio
-repourl: https://github.com/radio-aktywne/template-database-minio
-templatename: minio
+description: RustFS database template 🦀
+reponame: template-database-rustfs
+repourl: https://github.com/radio-aktywne/template-database-rustfs
+templatename: rustfs
 type: database

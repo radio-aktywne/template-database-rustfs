@@ -13,7 +13,6 @@ services:
       - "{{ envprefix }}__SERVER__HOST=${ {{- envprefix }}__SERVER__HOST:-0.0.0.0}"
       - "{{ envprefix }}__SERVER__PORTS__S3=${ {{- envprefix }}__SERVER__PORTS__S3:-{{ port -}} }"
       - "{{ envprefix }}__SERVER__PORTS__WEB=${ {{- envprefix }}__SERVER__PORTS__WEB:-{{ webport -}} }"
-      - "{{ envprefix }}__URLS__WEB=${ {{- envprefix }}__URLS__WEB:-http://localhost:{{ webport -}} }"
     network_mode: host
     volumes:
       - data:/database/data/
