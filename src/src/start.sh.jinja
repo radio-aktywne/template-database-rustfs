@@ -58,12 +58,23 @@ handlesignals() {
 
 # Function to wait until RustFS is ready
 waituntilready() {
-	while ! rc alias set rustfs "http://localhost:${port}" "${admin_user}" "${admin_password}" >/dev/null 2>&1; do
-		echo 'Waiting for RustFS to start...'
-		sleep 0.1
-	done
+	retries=30
+	interval=1
 
-	echo 'Connected to RustFS!'
+	for i in $(seq 1 "${retries}"); do
+		if [ "${i}" -eq "${retries}" ]; then
+			echo 'Could not connect to RustFS!'
+			return 1
+		fi
+
+		if rc alias set rustfs "http://localhost:${port}" "${admin_user}" "${admin_password}" >/dev/null 2>&1; then
+			echo 'Connected to RustFS!'
+			break
+		else
+			echo 'Waiting for RustFS to start...'
+			sleep "${interval}"
+		fi
+	done
 }
 
 # Bucket setup function
